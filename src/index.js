@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk'
+import { createStore, applyMiddleware } from 'redux'
+import userReducer from './redux/reducers/userReducer'
+import logger from 'redux-logger'
+import {getAllUser } from './redux/actions/userAction'
+
+export const store = createStore(userReducer,applyMiddleware(thunkMiddleware, logger));
+store.dispatch(getAllUser());
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
