@@ -10,7 +10,6 @@ const AppRoutes = () => {
       <Route path="/" component={Home} exact/>
       <Route path="/user/:_id" component={User} />
       <Route path="/userForm/:_id" component={AddNewUser} />
-      {/* <Route path="/sellerHomePage" component={ SellerHomePage } /> */}
     </Switch>
   )
 }

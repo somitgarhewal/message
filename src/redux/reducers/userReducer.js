@@ -1,10 +1,9 @@
-import { GET_ALL_USER, ADD_NEW_USER, UPDATE_USER } from '../types'
+import { GET_ALL_USER, ADD_NEW_USER, UPDATE_USER, USER_LOGGED_IN } from '../types'
  
 const initialState = {
-        loggedInUser: "none",
+        loggedInUser: null,
         users: []  
         }
-        
     
   const  userReducer  = (state = initialState, action) => {
         switch(action.type){ 
@@ -37,6 +36,12 @@ const initialState = {
                   ...state,
                   users : updatedUsers
                 }
+
+             case USER_LOGGED_IN :
+              return {
+                ...state,
+                loggedInUser: action.user
+              }
 
           default: return state
         }
