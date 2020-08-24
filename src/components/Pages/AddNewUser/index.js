@@ -126,7 +126,7 @@ const AddNewUser = (props) => {
                 </div>
                 <div className="sm:p-3">
                     Father's Name :
-                <input className='form-control' type='text' placeholder="Father's Name " name="fathername" value={formData.fathername} onChange={handleInput} />
+                <input className='form-control' type='text' placeholder="Father's Name" name="fathername" value={formData.fathername} onChange={handleInput} />
                     {error && <p className="text-danger  text-center">{error.fatherName}</p>}
                 </div>
                 <div className="sm:p-3">

@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Header from './components/header'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'react-bootstrap'
@@ -11,8 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <AppRoutes />
-      
+      <AppRoutes />  
     </BrowserRouter>
   );
 }

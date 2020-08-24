@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 
 const User = (props) => {
   const user = useSelector(state => state.users.find((item) => item._id == props.match.params._id))
@@ -19,7 +20,7 @@ const User = (props) => {
                 </a>
               </li>
             </ul>
-            {!(user) ? 'Loading...' : (
+            {!(user) ?   <Redirect to= '/' />  : (
               <div className="tab-content py-4">
                 <div className="tab-pane active" id="profile">
                   <h5 className="mb-3">{user.name}</h5>

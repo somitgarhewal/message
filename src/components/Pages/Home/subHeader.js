@@ -1,24 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Select from 'react-select'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import { Link } from 'react-router-dom';
+const SubHeader = (props) => {
+    const [selectedOption, setSelectedOption] = useState("")
+    const searchList = props.users.map((item) => {
+        return {
+            value: item._id,
+            label: item.name
+        }
+    })
 
-const SubHeader = () => {
-
-   
     return (
-        <div className="form-inline px-5 pt-3 justify-content-between">
-            <div>
-                <input className="form-control" type="text" placeholder="Search" aria-label="Search" />
-                <button className="btn my-0 btn-secondary" >Search</button>
+        <div className=" container mt-3">
+            <div className="row">
+                <div className="col-8  justify-content-end">
+                    <Select
+                        value={selectedOption}
+                        options={searchList}
+                        onChange={(selectedOption) => setSelectedOption(selectedOption)}
+                        placeholder="Search..."
+                        openMenuOnClick={false}
+                    />
+                </div>
+
+                <div className="col-3 mr-2">
+                    <Link to={`/user/${selectedOption.value}`}>
+                        <button className="btn my-0 btn-secondary">Search</button>
+                    </Link>
+                </div>
             </div>
-            <Link to={`/userForm/${null}`}>
-            <button className='btn  btn-primary' >
-                <FontAwesomeIcon icon={faPlus} color="white" className="mr-2" size="1x" />
-                Add new contact
-            </button>
-            </Link>
+            <div className="col-md mt-3">
+                <Link to={`/userForm/${null}`}>
+                    <button className='btn  btn-primary' >
+                        <FontAwesomeIcon icon={faPlus} color="white" className="mr-2" size="1x" />
+                        Add new contact
+                    </button>
+                </Link>
+            </div>
         </div>
     )
 }

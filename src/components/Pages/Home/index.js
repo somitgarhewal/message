@@ -1,13 +1,16 @@
 import React from 'react'
-import SubHeader from './subHeader'
 import Table from './table'
+import { useSelector } from 'react-redux'
+import SubHeader from './subHeader'
+
 
 function Home() {
-    return (
-        <div className="flex p-3 items-center ">
-            <SubHeader />
-            <Table/>
+    const users = useSelector(state => state.users)
 
+    return (
+        <div className=" items-center ">
+            <SubHeader users={users} />
+            <Table users={users} />
         </div>
     )
 }

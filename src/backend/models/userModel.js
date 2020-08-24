@@ -9,10 +9,7 @@ var userSchema = new Schema({
     company: String,
     contactNo: String,
     dob: Date,
-    message: {
-        incoming: [{ from: String, at: Date, msg: String }],
-        outgoing: [{ to: String, at: Date, msg: String }]
-    }
+    message: [{ from: String, to: String, at: Date, msg: String }],
 });
 
 
