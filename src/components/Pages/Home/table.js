@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faComment, faEdit } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from 'react-redux'
+import { faEye, faComment, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { useSelector, useDispatch } from 'react-redux'
+
+import { deleteUser } from "../../../redux/actions/userAction"
 
 const Table = (props) => {
 
     const activeUser = useSelector(state => state.loggedInUser)
     const users = props.users.filter(item => item._id !== activeUser)
+    const dispatch = useDispatch()
 
     return (<div className="row ">
         <div className="col table-responsive ">
@@ -18,6 +21,7 @@ const Table = (props) => {
                             <th>Name</th>
                             <th>E-mail id</th>
                             <th>Company</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -50,6 +54,14 @@ const Table = (props) => {
                                             <FontAwesomeIcon icon={faComment} color="grey" className="mr-2" size="lg" />
                                         </button>
                                     </Link>
+
+                                </td>
+                                <td className="text-center">
+
+                                    <button className="btn" onClick={() =>dispatch(deleteUser(element._id))} >
+                                        <FontAwesomeIcon icon={faTrashAlt} color="grey" className="mr-2" size="lg" />
+                                    </button>
+
 
                                 </td>
                             </tr>)}

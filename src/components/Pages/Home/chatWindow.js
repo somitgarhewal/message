@@ -5,7 +5,6 @@ import { updateUser } from '../../../redux/actions/userAction'
 import Message from './message';
 import { Redirect } from 'react-router-dom';
 
-
 const ChatWindow = (props) => {
     const [input, setInput] = useState("")
     const loggedIn = useSelector(state => state.loggedInUser)
@@ -17,7 +16,6 @@ const ChatWindow = (props) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        window.scrollTo(1, 1)
         if (isSend) {
             dispatch(updateUser(props.match.params._id, user))
             dispatch(updateUser(fromUser._id, currentUser))
@@ -33,6 +31,7 @@ const ChatWindow = (props) => {
         setIsSend(true)
     }
 
+
     return (
         <>
             {!loggedIn ?
@@ -40,7 +39,7 @@ const ChatWindow = (props) => {
                     {alert("Please login to send message")}
                     <Redirect to='/' />
                 </> :
-                <div className="flex-wrap bg-dark">
+                <div className="flex-wrap ">
                     <div className="py-2 bg-light pl-2 mb-2" >
                         <h1>{toUser.name}</h1>
                     </div>
@@ -53,7 +52,7 @@ const ChatWindow = (props) => {
                         )
                         }
                     </div>
-                    <form onSubmit={handleSend} className="mb-2 bg-dark">
+                    <form onSubmit={handleSend} className="pt-5">
                         <FormControl className="fixed-bottom position-fixed bottom position-sticky form-control form-inline">
                             <Input className="w-75" placeholder="enter message" value={input} onChange={(e) => setInput(e.target.value)} />
                             <Button type="submit" disabled={!input} className="btn btn-sm col-3 btn-dark" >Send</Button>

@@ -1,4 +1,4 @@
-import { GET_ALL_USER, ADD_NEW_USER, UPDATE_USER, USER_LOGGED_IN } from '../types'
+import { GET_ALL_USER, ADD_NEW_USER, UPDATE_USER, USER_LOGGED_IN, DELETE_USER } from '../types'
 import axios from 'axios'
 
 export const getAllUser = () => {
@@ -34,7 +34,7 @@ export const addUser = (newUserData) => {
 export const updateUser = (id, updatedData) => {
     return async dispatch => {
         try {
-            const response = await axios.put(`http://localhost:5000/api/updateUser/${id}`, updatedData)
+            const response = await axios.put(`http://www.localhost:5000/api/updateUser/${id}`, updatedData)
             dispatch({
                 type: UPDATE_USER,
                 payload: response.data
@@ -48,4 +48,20 @@ export const updateUser = (id, updatedData) => {
 
 export const userLoggedIn = (user) => {
     return { type: USER_LOGGED_IN, user };
+}
+
+
+export const deleteUser = (id) => {
+    return async dispatch => {
+        try {
+           const response = await axios.delete(`http://localhost:5000/api/deleteUser/${id}`)
+            dispatch({
+                type: DELETE_USER,
+               payload: id
+            })
+        }
+        catch (error) {
+            console.log("error occured: ", error);
+        }
+    }
 }
