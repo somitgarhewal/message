@@ -26,7 +26,6 @@ const initialState = {
                 const updateUsersRef = [...state.users]
                 const updatedUsers = updateUsersRef.map(element => {
                    if(element._id == action.payload.user._id) {
-                       alert("user updated")
                      return action.payload.user
                   }
                     return element

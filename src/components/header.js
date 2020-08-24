@@ -12,8 +12,8 @@ function Header() {
                 <button className="btn inline text-white text-decoration-none" onClick={(e) => dispatch(userLoggedIn(e.target.value))}>
                     <select className="mdb-select bg-primary border-none" >
                         <option value="null" disabled selected>Please Select User</option>
-                        {users.map(item =>
-                            <option value={item._id} className="bg-light"> {item.name} </option>
+                        {users.map((item, index) =>
+                            <option key={index} value={item._id} className="bg-light"> {item.name} </option>
                         )}
                     </select>
                 </button>
